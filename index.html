@@ -1,23 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <title></title>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+  </style>
+  <script src="./js/shared-config.js"></script>
+  <script src="https://sdk.openui5.org/resources/sap-ui-core.js"
+          id="sap-ui-bootstrap"
+          data-sap-ui-libs="sap.tnt, sap.m, sap.f">
+  </script>
+  <link rel="stylesheet" href="./styles/main.css">
+  <script>
+    var model = new sap.ui.model.json.JSONModel();
+    var data = {
+      navigation: [
+        {
+          title: 'sap.m',
+          icon: 'sap-icon://dimension',
+          expanded: false,
+          items: [
+            { title: 'Input', key: 'inputPage' },
+            { title: 'CheckBox', key: 'checkBoxPage', enabled: true },
+            { title: 'Label', key: 'labelPage' },
+            { title: 'MenuButton', key: 'menuButtonPage' },
+            { title: 'Button', key: 'buttonPage' },
+            { title: 'UploadSet', key: 'uploadSetPage' },
+            { title: 'Switch', key: 'switchPage' },
+            { title: 'ProgressIndicator', key: 'progressIndicatorPage' },
+            { title: 'TextArea', key: 'textAreaPage' },
+            { title: 'Text', key: 'textPage' },
+            { title: 'ExpandableText', key: 'expandableTextPage' },
+            { title: 'FormattedText', key: 'formattedTextPage' }
+
+          ]
+        },
+        {
+          title: 'sap.ui',
+          icon: 'sap-icon://dimension',
+          expanded: true,
+          items: [
+            { title: 'Table', key: 'tablePage'},
+            { title: 'Child Item 2' , expanded: true, items:[{title:'A'},{title:'B'}]},
+            { title: 'Child Item 3' }
+          ]
+        },
+        {
+          title: 'sap.tnt',
+          icon: 'sap-icon://dimension',
+          expanded: false,
+          items: [
+            { title: 'ToolHeader', key: 'toolHeaderPage'},
+            { title: 'Child Item 2' },
+            { title: 'Child Item 3' }
+          ]
+        }
+      ],
+      fixedNavigation: [
+        { title: 'Fixed Item 1', icon: 'sap-icon://employee' },
+        { title: 'Fixed Item 2', icon: 'sap-icon://building' },
+        { title: 'Fixed Item 3', icon: 'sap-icon://card' }]
+    };
+    model.setData(data);
+
+    var oSideNavigation = new sap.tnt.SideNavigation("SNav", {
+      expanded: false,
+      itemSelect: function (event) {
+        oNavContainer.to(event.getParameter('item').getKey())
+      },
+      item: new sap.tnt.NavigationList("NList", {
+        items: {
+          template: new sap.tnt.NavigationListItem({
+            text: '{title}',
+            icon: '{icon}',
+            enabled: '{enabled}',
+            expanded: '{expanded}',
+            items: {
+              template: new sap.tnt.NavigationListItem({
+                text: '{title}',
+                key: '{key}',
+                enabled: '{enabled}',
+                expanded: '{expanded}',
+                items: {
+                  template: new sap.tnt.NavigationListItem({
+                    text: '{title}',
+                    key: '{key}',
+                    enabled: '{enabled}'
+                  }),
+                  path: 'items',
+                  templateShareable: true,
+                }
+              }),
+              path: 'items',
+              templateShareable: true,
+            }
+          }),
+
+          path: '/navigation'
+        }
+      }),
+      fixedItem: new sap.tnt.NavigationList({
+        items: {
+          template: new sap.tnt.NavigationListItem({
+            text: '{title}',
+            icon: '{icon}'
+          }),
+          path: '/fixedNavigation'
+        }
+      })
+    }).setModel(model);
+
+    var oNavContainer = new sap.m.NavContainer({
+      pages: [
+        new sap.m.ScrollContainer('mainPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+
+            new sap.ui.core.HTML("mainIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="welcome.html"></iframe></div>'})
+          ]
+        }),
+
+        new sap.m.ScrollContainer('inputPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+
+            new sap.ui.core.HTML("inputIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Input.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('checkBoxPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+
+            new sap.ui.core.HTML("checkBoxIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.CheckBox.html"></iframe></div>'})
+          ]
+        }),
+
+        new sap.m.ScrollContainer('labelPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+
+
+            new sap.ui.core.HTML("labelIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Label.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('buttonPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("buttonIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Button.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('tablePage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("tableIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.ui.table.Table.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('menuButtonPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("menuButtonIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.MenuButton.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('toolHeaderPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("toolHeaderIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.tnt.ToolHeader.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('uploadSetPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("uploadSetIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.UploadSet.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('switchPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("switchIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Switch.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('progressIndicatorPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("progressIndicatorIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ProgressIndicator.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('textAreaPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("textAreaIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.TextArea.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('textPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("textIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Text.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('expandableTextPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("expandableTextIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ExpandableText.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('formattedTextPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("formattedTextIframe", {content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.FormattedText.html"></iframe></div>'})
+          ]
+        })
+      ]
+    });
+
+
+
+    var oShellBar = new sap.f.ShellBar({
+      homeIcon: sap.ui.require.toUrl("sap/ui/documentation/sdk/images/logo_sap.png"),
+      title: "UI5 Test Frame",
+      secondTitle: "sample",
+      showCopilot: false,
+      searchManager: new sap.f.SearchManager(),
+      showProductSwitcher: true,
+      showNotifications: true,
+      showMenuButton:true,
+      notificationsNumber: "2",
+      profile: new sap.f.Avatar({
+        initials: "DN"
+      }),
+      menu: new sap.m.Menu({
+        title: "random 2",
+        items: [
+          new sap.m.MenuItem({
+            text: "fridge",
+            icon: "sap-icon://fridge",
+            items: [
+              new sap.m.MenuItem({ text: "accidental leave", icon: "sap-icon://accidental-leave" }),
+              new sap.m.MenuItem({ text: "iphone", icon: "sap-icon://iphone" }),
+              new sap.m.MenuItem({ text: "globe", icon: "sap-icon://globe" })
+            ]
+          })
+        ]
+      }),
+
+      additionalContent: [
+        new sap.m.OverflowToolbarButton({ icon: "sap-icon://home", text: "home", type: "Transparent" }),
+        new sap.m.OverflowToolbarButton({ icon: "sap-icon://add-photo", text: "Add photo", type: "Transparent" }),
+        new sap.m.OverflowToolbarButton({ icon: "sap-icon://action-settings", text: "Action settings", type: "Transparent" }),
+
+
+      ],
+
+      menuButtonPressed:function (){
+        var bExpanded = oSideNavigation.getExpanded();
+        oSideNavigation.setExpanded(!bExpanded);
+      }
+    });
+
+
+
+
+
+    new sap.tnt.ToolPage({
+      header: oShellBar,
+      subHeader: oShellBar,
+      sideContent: oSideNavigation,
+      mainContents: oNavContainer
+    }).placeAt('body');
+
+  </script>
+</head>
+
+<body id="body" class="sapUiBody">
+</body>
+
 </html>
