@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>sap.m.ExpandableText</title>
+        <style>
+            hr {
+                height: 2px;
+                color: #777777;
+                background-color: red;
+                border: none;
+            }
+        </style>
+		<script src="./js/shared-config.js"></script>
+		<script id="sap-ui-bootstrap"
+				src="https://sdk.openui5.org/resources/sap-ui-core.js"
+				data-sap-ui-compatVersion="edge"
+				data-sap-ui-libs="sap.m, sap.ui.layout"
+                data-sap-ui-async="false"
+				>
+		</script>
+        <script>
+
+            jQuery.sap.require("sap.m.App"); //에러 발생 : data-sap-ui-async="true"
+            jQuery.sap.require("sap.ui.layout.form.SimpleForm");
+
+
+
+            var oScrollContainer = new sap.m.ScrollContainer({
+                width: "280px",
+                height: "auto",
+                vertical: false,
+                horizontal: false,
+                content: [
+                    new sap.ui.core.HTML({
+                        content: "<hr/><div>default</div><br/>"
+                    }),
+                    new sap.m.ExpandableText({
+                        text: '청춘! 이는 듣기만 하여도 가슴이 설레는 말이다. 청춘! 너의 두 손을 가슴에 대고, 물방아 같은 심장의 고동을 들어 보라. 청춘의 피는 끓는다. 끓는 피에 뛰노는 심장은 거선(巨船)의 기관(汽罐)같이 힘있다. 이것이다. 인류의 역사를 꾸며 내려온 동력은 바로 이것이다. 이성(理性)은 투명하되 얼음과 같으며, 지혜는 날카로우나 갑 속에 든 칼이다. 청춘의 끓는 피가 아니더면, 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물(萬物)은 죽음이 있을 뿐이다.'
+                    }),
+                    new sap.ui.core.HTML({
+                        content: "<hr/><hr/><div>Popover</div><br/>"
+                    }),
+                    new sap.m.ExpandableText({
+                        text: '청춘예찬\n\n(민태원)\n\n청춘! 이는 듣기만 하여도 가슴이 설레는 말이다. 청춘! 너의 두 손을 가슴에 대고, 물방아 같은 심장의 고동을 들어 보라. 청춘의 피는 끓는다. 끓는 피에 뛰노는 심장은 거선(巨船)의 기관(汽罐)같이 힘있다. 이것이다. 인류의 역사를 꾸며 내려온 동력은 바로 이것이다. 이성(理性)은 투명하되 얼음과 같으며, 지혜는 날카로우나 갑 속에 든 칼이다. 청춘의 끓는 피가 아니더면, 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물(萬物)은 죽음이 있을 뿐이다.',
+                        renderWhitespace: true,
+                        wrappingType:"Hyphenated",
+                        overflowMode:"Popover"
+                    }),
+
+                    new sap.ui.core.HTML({
+                        content: "<hr/><hr/><div>InPlace</div><br/>"
+                    }),
+                    new sap.m.ExpandableText({
+                        text: '청춘 예찬\n\n(민태원)\n\n청춘! 이는 듣기만 하여도 가슴이 설레는 말이다. 청춘! 너의 두 손을 가슴에 대고, 물방아 같은 심장의 고동을 들어 보라. 청춘의 피는 끓는다. 끓는 피에 뛰노는 심장은 거선(巨船)의 기관(汽罐)같이 힘있다. 이것이다. 인류의 역사를 꾸며 내려온 동력은 바로 이것이다. 이성(理性)은 투명하되 얼음과 같으며, 지혜는 날카로우나 갑 속에 든 칼이다. 청춘의 끓는 피가 아니더면, 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물(萬物)은 죽음이 있을 뿐이다.',
+                        renderWhitespace: true,
+                        wrappingType:"Hyphenated"
+                    }),
+
+                ]
+
+            });
+
+            var oSimpleForm = new sap.ui.layout.form.SimpleForm({
+                editable: false,
+                layout: "ResponsiveGridLayout",
+                columnsL: 1,
+                width: '640px',
+                title: "Form: editable='false', compact mode",
+                content: [
+                    new sap.m.Label({text: "sap.m.Text"}),
+                    new sap.m.Text({text: "Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text"}),
+                    new sap.m.Label({text: "sap.m.ExpandableText"}),
+                    new sap.m.ExpandableText({text: "Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text"}),
+                    new sap.m.Label({text: "sap.m.ExpandableText emptyIndicatorMode='On'"}),
+                    new sap.m.ExpandableText({emptyIndicatorMode: 'On'}),
+                    new sap.m.Label({text: "sap.m.ExpandableText emptyIndicatorMode='Off'"}),
+                    new sap.m.ExpandableText({emptyIndicatorMode: 'Off'}),
+                    new sap.m.Label({text: "sap.m.ExpandableText emptyIndicatorMode='Auto'"}),
+                    new sap.m.ExpandableText({emptyIndicatorMode: 'Auto'}),
+
+
+                ]
+
+            });
+
+            var oSimpleForm2 = new sap.ui.layout.form.SimpleForm({
+                editable: true,
+                layout: "ResponsiveGridLayout",
+                columnsL: 1,
+                width: '640px',
+                title: "Form: editable='true', compact mode",
+                content: [
+                    new sap.m.Label({text: "sap.m.Text"}),
+                    new sap.m.Text({text: "Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text"}),
+                    new sap.m.Label({text: "sap.m.ExpandableText"}),
+                    new sap.m.ExpandableText({text: "Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text. Long text"}),
+
+                ]
+
+            })
+
+            var oTable = new sap.m.Table({
+                columns: [
+                    new sap.m.Column({
+                        header: new sap.m.Text({text: "A컬럼"})
+                    }),
+                    new sap.m.Column({
+                        header: new sap.m.Text({text: "B컬럼(제한 100자리)"})
+                    })
+                ],
+                items: [
+                    new sap.m.ColumnListItem({
+                        cells: [
+                            new sap.m.Text({text: "Popover"}),
+                            new sap.m.ExpandableText({
+                                text: "이는 듣기만 하여도 가슴이 설레는 말이다. 청춘! 너의 두 손을 가슴에 대고, 물방아 같은 심장의 고동을 들어 보라. 청춘의 피는 끓는다. 끓는 피에 뛰노는 심장은 거선(巨船)의 기관(汽罐)같이 힘있다. 이것이다. 인류의 역사를 꾸며 내려온 동력은 바로 이것이다. 이성(理性)은 투명하되 얼음과 같으며, 지혜는 날카로우나 갑 속에 든 칼이다. 청춘의 끓는 피가 아니더면, 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물(萬物)은 죽음이 있을 뿐이다.",
+                                wrappingType: "Hyphenated",
+                                overflowMode:"Popover"
+                            })
+                        ]
+                    }),
+                    new sap.m.ColumnListItem({
+                        cells: [
+                            new sap.m.Text({text: "InPlace"}),
+                            new sap.m.ExpandableText({
+                                text: "이는 듣기만 하여도 가슴이 설레는 말이다. 청춘! 너의 두 손을 가슴에 대고, 물방아 같은 심장의 고동을 들어 보라. 청춘의 피는 끓는다. 끓는 피에 뛰노는 심장은 거선(巨船)의 기관(汽罐)같이 힘있다. 이것이다. 인류의 역사를 꾸며 내려온 동력은 바로 이것이다. 이성(理性)은 투명하되 얼음과 같으며, 지혜는 날카로우나 갑 속에 든 칼이다. 청춘의 끓는 피가 아니더면, 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물(萬物)은 죽음이 있을 뿐이다.",
+                                wrappingType: "Hyphenated"
+                            })
+                        ]
+                    }),
+                ]
+            })
+
+            var oToggleButton = new sap.m.ToggleButton("toggleCompact", {
+                text: "Compact / Cozy (default) Mode",
+                pressed: !sap.ui.Device.system.phone && jQuery("html").hasClass("sapUiSizeCompact"),
+                press: function () {
+                    jQuery("body").toggleClass("sapUiSizeCompact", this.getPressed());
+                    jQuery("body").toggleClass("sapUiSizeCozy", !this.getPressed());
+                }
+            });
+
+            var oApp = new sap.m.App();
+
+            var oPage = new sap.m.Page({
+                title: "sap.m.Expandable Text",
+                headerContent: [
+                    new sap.m.Button({text: 'Forcus trap'}),
+                    oToggleButton
+                ],
+                content: [
+                    oScrollContainer,
+                    new sap.ui.core.HTML({
+                        content: "<hr/><hr/><div>Table</div><br/>"
+                    }),
+                    oTable,
+                    new sap.ui.core.HTML({
+                        content: "<hr/><hr/><div>Short text</div><br/>"
+                    }),
+
+                    new sap.m.ExpandableText({
+                        text: '청춘 예찬'
+                    }),
+                    new sap.ui.core.HTML({
+                        content: "<hr/><hr/><div>editable</div><br/>"
+                    }),
+                    oSimpleForm,
+                    new sap.ui.core.HTML({
+                        content: "<hr/>"
+                    }),
+                    oSimpleForm2,
+
+                    ]
+            });
+            oApp.addPage(oPage).placeAt("body");
+
+
+
+        </script>
+
+	</head>
+    <body id="body" class="sapUiBody">
+    <div id="content"></div>
+    </body>
+</html>
