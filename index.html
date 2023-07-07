@@ -16,11 +16,14 @@
 
   <script src="https://sdk.openui5.org/resources/sap-ui-core.js"
           id="sap-ui-bootstrap"
-          data-sap-ui-libs="sap.tnt, sap.m, sap.f">
+          data-sap-ui-libs="sap.tnt, sap.m, sap.f, sap.ui.layout">
   </script>
 
   <link rel="stylesheet" href="./styles/main.css">
   <script>
+
+    jQuery.sap.require("sap.ui.model.json.JSONModel");
+
     var model = new sap.ui.model.json.JSONModel();
     var data = {
       navigation: [
@@ -71,7 +74,25 @@
       fixedNavigation: [
         { title: 'Fixed Item 1', icon: 'sap-icon://employee' },
         { title: 'Fixed Item 2', icon: 'sap-icon://building' },
-        { title: 'Fixed Item 3', icon: 'sap-icon://card' }]
+        { title: 'Fixed Item 3', icon: 'sap-icon://card' }
+      ],
+
+      THEMES : [
+        {key: "base", text: "Base"},
+        {key: "sap_horizon", text: "Morning Horizon"},
+        {key: "sap_horizon_dark", text: "Evening Horizon"},
+        {key: "sap_fiori_3", text: "Quartz Light"},
+        {key: "sap_fiori_3_dark", text: "Quartz Dark"},
+        {key: "sap_fiori_3_hcb", text: "Quartz High Contrast Black"},
+        {key: "sap_fiori_3_hcw", text: "Quartz High Contrast White"},
+        {key: "sap_belize", text: "Belize"},
+        {key: "sap_belize_plus", text: "Belize Plus"},
+        {key: "sap_belize_hcb", text: "Belize High Contrast Black"},
+        {key: "sap_belize_hcw", text: "Belize High Contrast White"},
+        {key: "sap_bluecrystal", text: "Blue Crystal"},
+        {key: "sap_hcb", text: "High Contrast Black"},
+
+      ],
     };
     model.setData(data);
 
@@ -329,6 +350,27 @@
                 jQuery("body").addClass("sapUiSizeCompact");
               }
             });
+    var bContrastMode = false;
+    var oContrastModeCB = new sap.m.CheckBox("oCheckBox",{
+      text: "Contrast Mode",
+      select: function(oEvent){
+
+         if ( bContrastMode !== oEvent.mParameters.selected ) {
+          var frameDocument = window.document;
+          var frameDocumentBody = frameDocument.querySelector("body");
+          if ( frameDocumentBody ) {
+            frameDocumentBody.classList.remove("sapContrast");
+            frameDocumentBody.classList.remove("sapContrastPlus");
+            if (sap.ui.getCore().getConfiguration().getTheme() == "sap_belize" && oEvent.mParameters.selected) {
+              frameDocumentBody.classList.add("sapContrast");
+            } else if (sap.ui.getCore().getConfiguration().getTheme() == "sap_belize_plus" && oEvent.mParameters.selected) {
+              frameDocumentBody.classList.add("sapContrastPlus");
+            }
+          }
+           bContrastMode = oEvent.mParameters.selected;
+         }
+      }
+    })
 
     var oViewSettingsDialog = new sap.m.ViewSettingsDialog("settingsDialogCustomTab", {
       confirm: function (oEvent){
@@ -342,14 +384,43 @@
         tooltip: "전체 설정",
         content: [
 
-                new sap.m.Label({text: "Compact Content Density", design: "Bold"}),
-                new sap.m.SegmentedButton("VSDCompactModeButtons", {
-                  buttons:[oB, oB2],
-                  selectedButton: oB,
-                  width: "100%"
-                }),
+          new sap.m.Label({text: "Compact Content Density", design: "Bold"}),
+          new sap.m.SegmentedButton("VSDCompactModeButtons", {
+            buttons:[oB, oB2],
+            selectedButton: oB2,
+            width: "100%"
+          }),
 
+          new sap.m.Label({text: "Themes", design: "Bold"}).addStyleClass("sapUiSmallMarginTop"),
+          new sap.ui.core.HTML({content:"<br/>"}),
+          new sap.m.ComboBox({
+            width: "100%",
+            selectedKey: "sap_belize_plus",
+            showSecondaryValues: true,
+            items: {
+              path: "/THEMES",
+              template: new sap.ui.core.ListItem({
+                key: "{key}",
+                text: "{text}",
+                additionalText: "{key}"
+              })
+            },
+            change: function themeChanged(e) {
+              var oCombo = e.getSource();
+              var sTheme = oCombo.getSelectedKey() || oCombo.getValue();
 
+              if (sTheme === "sap_belize" || sTheme === "sap_belize_plus") {
+                oContrastModeCB.setEnabled(true);
+              } else {
+                oContrastModeCB.setEnabled(false);
+                oContrastModeCB.setSelected(false);
+              }
+              sap.ui.getCore().applyTheme(sTheme);
+            }
+          }).setModel(model),
+          // new sap.m.Label({text: "Contrast Mode", design: "Bold"}).addStyleClass("sapUiSmallMarginTop"),
+          new sap.ui.core.HTML({content:"<br/>"}),
+          oContrastModeCB,
         ]
 
       })
@@ -373,7 +444,7 @@
   </script>
 </head>
 
-<body id="body" class="sapUiBody">
+<body id="body" class="sapUiBody sapUiSizeCompact">
 </body>
 
 </html>
