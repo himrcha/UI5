@@ -13,10 +13,12 @@
     }
   </style>
   <script src="./js/shared-config.js"></script>
+
   <script src="https://sdk.openui5.org/resources/sap-ui-core.js"
           id="sap-ui-bootstrap"
           data-sap-ui-libs="sap.tnt, sap.m, sap.f">
   </script>
+
   <link rel="stylesheet" href="./styles/main.css">
   <script>
     var model = new sap.ui.model.json.JSONModel();
@@ -38,7 +40,10 @@
             { title: 'TextArea', key: 'textAreaPage' },
             { title: 'Text', key: 'textPage' },
             { title: 'ExpandableText', key: 'expandableTextPage' },
-            { title: 'FormattedText', key: 'formattedTextPage' }
+            { title: 'FormattedText', key: 'formattedTextPage' },
+            { title: 'SegmentedButton', key: 'segmentedButtonPage' },
+            { title: 'ViewSettingsDialog', key: 'viewSettingsDialogPage' },
+
 
           ]
         },
@@ -48,7 +53,7 @@
           expanded: true,
           items: [
             { title: 'Table', key: 'tablePage'},
-            { title: 'Child Item 2' , expanded: true, items:[{title:'A'},{title:'B'}]},
+            { title: 'Child Item 2',  expanded: true, items:[{title:'A'},{title:'B'}]},
             { title: 'Child Item 3' }
           ]
         },
@@ -57,8 +62,8 @@
           icon: 'sap-icon://dimension',
           expanded: false,
           items: [
-            { title: 'ToolHeader', key: 'toolHeaderPage'},
-            { title: 'Child Item 2' },
+            { title: 'ToolHeader', key: 'toolHeaderPage', icon: 'sap-icon://dimension'},
+            { title: 'Child Item 2'},
             { title: 'Child Item 3' }
           ]
         }
@@ -86,6 +91,7 @@
               template: new sap.tnt.NavigationListItem({
                 text: '{title}',
                 key: '{key}',
+                icon: '{icon}',
                 enabled: '{enabled}',
                 expanded: '{expanded}',
                 items: {
@@ -245,6 +251,22 @@
           content: [
             new sap.ui.core.HTML("formattedTextIframe", {content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.FormattedText.html"></iframe></div>'})
           ]
+        }),
+        new sap.m.ScrollContainer('viewSettingsDialogPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("viewSettingsDialogIframe", {content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ViewSettingsDialog.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('segmentedButtonPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML("segmentedButtonIframe", {content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.SegmentedButton.html"></iframe></div>'})
+          ]
         })
       ]
     });
@@ -253,8 +275,8 @@
 
     var oShellBar = new sap.f.ShellBar({
       homeIcon: sap.ui.require.toUrl("sap/ui/documentation/sdk/images/logo_sap.png"),
-      title: "UI5 Test Frame",
-      secondTitle: "sample",
+      title: "ShellBar title",
+      secondTitle: "ShellBar secondTitle",
       showCopilot: false,
       searchManager: new sap.f.SearchManager(),
       showProductSwitcher: true,
@@ -262,7 +284,7 @@
       showMenuButton:true,
       notificationsNumber: "2",
       profile: new sap.f.Avatar({
-        initials: "DN"
+        initials: "CHA"
       }),
       menu: new sap.m.Menu({
         title: "random 2",
@@ -282,7 +304,12 @@
       additionalContent: [
         new sap.m.OverflowToolbarButton({ icon: "sap-icon://home", text: "home", type: "Transparent" }),
         new sap.m.OverflowToolbarButton({ icon: "sap-icon://add-photo", text: "Add photo", type: "Transparent" }),
-        new sap.m.OverflowToolbarButton({ icon: "sap-icon://action-settings", text: "Action settings", type: "Transparent" }),
+        new sap.m.OverflowToolbarButton({ icon: "sap-icon://action-settings", text: "Action settings", type: "Transparent", press:function (oEvent){
+            // var oButton = oEvent.getSource();
+            // oPopover.openBy(oButton);
+            oViewSettingsDialog.open();
+          }
+        }),
 
 
       ],
@@ -292,6 +319,49 @@
         oSideNavigation.setExpanded(!bExpanded);
       }
     });
+
+    var oB = new sap.m.Button("VSDcompactOn",{text: "Cozy" , press:function (){
+        jQuery("body").removeClass("sapUiSizeCompact");
+        jQuery("body").addClass("sapUiSizeCozy");
+      } });
+    var oB2 = new sap.m.Button("VSDcompactOff",{text: "Compact", press:function (){
+               jQuery("body").removeClass("sapUiSizeCozy");
+                jQuery("body").addClass("sapUiSizeCompact");
+              }
+            });
+
+    var oViewSettingsDialog = new sap.m.ViewSettingsDialog("settingsDialogCustomTab", {
+      confirm: function (oEvent){
+        if (oEvent.getParameters().filterString) {
+          new sap.m.MessageToast.show(oEvent.getParameters().filterString);
+        }
+      },
+      customTabs: new sap.m.ViewSettingsCustomTab("app-settings",{
+        icon: "sap-icon://action-settings",
+        title: "Settings",
+        tooltip: "전체 설정",
+        content: [
+
+                new sap.m.Label({text: "Compact Content Density", design: "Bold"}),
+                new sap.m.SegmentedButton("VSDCompactModeButtons", {
+                  buttons:[oB, oB2],
+                  selectedButton: oB,
+                  width: "100%"
+                }),
+
+
+        ]
+
+      })
+    });
+
+    var oPopover = new sap.m.Popover({
+      title: "Setting",
+      modal: false,
+      placement: "Bottom",
+      content: [oViewSettingsDialog]
+    });
+
 
 
 
