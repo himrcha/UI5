@@ -47,7 +47,7 @@
             { title: 'SegmentedButton', key: 'segmentedButtonPage' },
             { title: 'TextArea', key: 'textAreaPage' },
             { title: 'Text', key: 'textPage' },
-
+            { title: 'ToggleButton', key: 'toggleButtonPage' },
 
             { title: 'UploadSet', key: 'uploadSetPage' },
             { title: 'ViewSettingsDialog', key: 'viewSettingsDialogPage' },
@@ -300,6 +300,14 @@
           horizontal: false,
           content: [
             new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ComboBox.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('toggleButtonPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ToggleButton.html"></iframe></div>'})
           ]
         })
       ]
