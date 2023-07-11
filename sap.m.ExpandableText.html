@@ -134,7 +134,7 @@
             })
 
             var oToggleButton = new sap.m.ToggleButton("toggleCompact", {
-                text: "Compact / Cozy (default) Mode",
+                text: "Compact/Cozy",
                 pressed: !sap.ui.Device.system.phone && jQuery("html").hasClass("sapUiSizeCompact"),
                 press: function () {
                     jQuery("body").toggleClass("sapUiSizeCompact", this.getPressed());
@@ -147,7 +147,7 @@
             var oPage = new sap.m.Page({
                 title: "sap.m.Expandable Text",
                 headerContent: [
-                    new sap.m.Button({text: 'Forcus trap'}),
+                   // new sap.m.Button({text: 'Forcus trap'}),
                     oToggleButton
                 ],
                 content: [

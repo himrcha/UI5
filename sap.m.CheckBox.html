@@ -298,6 +298,16 @@
 			new sap.m.App({
 				pages : [
 					new sap.m.Page("checkbox-page", {
+						headerContent: [
+							new sap.m.ToggleButton("toggleCompact", {
+								text: "Compact/Cozy",
+								pressed: !sap.ui.Device.system.phone && jQuery("html").hasClass("sapUiSizeCompact"),
+								press: function () {
+									jQuery("body").toggleClass("sapUiSizeCompact", this.getPressed());
+									jQuery("body").toggleClass("sapUiSizeCozy", !this.getPressed());
+								}
+							})
+						],
 						title: "sap.m.CheckBox",
 						titleLevel: "H1",
 						content : [

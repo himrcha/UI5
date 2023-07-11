@@ -57,7 +57,7 @@
 		backgroundDesign: "Standard",
 		headerContent: [
 			new sap.m.ToggleButton("toggleCompact", {
-				text: "Compact / Cozy (default) Mode",
+				text: "Compact/Cozy",
 				pressed: !sap.ui.Device.system.phone && jQuery("html").hasClass("sapUiSizeCompact"),
 				press: function () {
 					jQuery("body").toggleClass("sapUiSizeCompact", this.getPressed());

@@ -32,19 +32,24 @@
           icon: 'sap-icon://dimension',
           expanded: false,
           items: [
-            { title: 'Input', key: 'inputPage' },
-            { title: 'CheckBox', key: 'checkBoxPage', enabled: true },
-            { title: 'Label', key: 'labelPage' },
-            { title: 'MenuButton', key: 'menuButtonPage' },
             { title: 'Button', key: 'buttonPage' },
-            { title: 'UploadSet', key: 'uploadSetPage' },
-            { title: 'Switch', key: 'switchPage' },
-            { title: 'ProgressIndicator', key: 'progressIndicatorPage' },
-            { title: 'TextArea', key: 'textAreaPage' },
-            { title: 'Text', key: 'textPage' },
+            { title: 'CheckBox', key: 'checkBoxPage', enabled: true },
+            { title: 'ComboBox', key: 'comboBoxPage' },
             { title: 'ExpandableText', key: 'expandableTextPage' },
             { title: 'FormattedText', key: 'formattedTextPage' },
+            { title: 'Input', key: 'inputPage' },
+
+            { title: 'Label', key: 'labelPage' },
+            { title: 'MenuButton', key: 'menuButtonPage' },
+
+            { title: 'ProgressIndicator', key: 'progressIndicatorPage' },
+            { title: 'Switch', key: 'switchPage' },
             { title: 'SegmentedButton', key: 'segmentedButtonPage' },
+            { title: 'TextArea', key: 'textAreaPage' },
+            { title: 'Text', key: 'textPage' },
+
+
+            { title: 'UploadSet', key: 'uploadSetPage' },
             { title: 'ViewSettingsDialog', key: 'viewSettingsDialogPage' },
 
 
@@ -152,7 +157,7 @@
           horizontal: false,
           content: [
 
-            new sap.ui.core.HTML("mainIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="welcome.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="welcome.html"></iframe></div>'})
           ]
         }),
 
@@ -162,7 +167,7 @@
           horizontal: false,
           content: [
 
-            new sap.ui.core.HTML("inputIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Input.html"></iframe></div>'})
+            new sap.ui.core.HTML( {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Input.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('checkBoxPage', {
@@ -171,7 +176,7 @@
           horizontal: false,
           content: [
 
-            new sap.ui.core.HTML("checkBoxIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.CheckBox.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.CheckBox.html"></iframe></div>'})
           ]
         }),
 
@@ -182,7 +187,7 @@
           content: [
 
 
-            new sap.ui.core.HTML("labelIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Label.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Label.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('buttonPage', {
@@ -190,7 +195,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("buttonIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Button.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Button.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('tablePage', {
@@ -198,7 +203,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("tableIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.ui.table.Table.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.ui.table.Table.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('menuButtonPage', {
@@ -206,7 +211,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("menuButtonIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.MenuButton.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.MenuButton.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('toolHeaderPage', {
@@ -214,7 +219,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("toolHeaderIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.tnt.ToolHeader.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.tnt.ToolHeader.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('uploadSetPage', {
@@ -222,7 +227,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("uploadSetIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.UploadSet.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.UploadSet.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('switchPage', {
@@ -230,7 +235,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("switchIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Switch.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Switch.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('progressIndicatorPage', {
@@ -254,7 +259,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("textIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Text.html"></iframe></div>'})
+            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Text.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('expandableTextPage', {
@@ -270,7 +275,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("formattedTextIframe", {content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.FormattedText.html"></iframe></div>'})
+            new sap.ui.core.HTML( {content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.FormattedText.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('viewSettingsDialogPage', {
@@ -286,7 +291,15 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML("segmentedButtonIframe", {content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.SegmentedButton.html"></iframe></div>'})
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.SegmentedButton.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('comboBoxPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ComboBox.html"></iframe></div>'})
           ]
         })
       ]
@@ -343,11 +356,17 @@
 
     var oB = new sap.m.Button("VSDcompactOn",{text: "Cozy" , press:function (){
         jQuery("body").removeClass("sapUiSizeCompact");
+        jQuery("* #sap-ui-ContentWindowFrame").contents().find("body").removeClass("sapUiSizeCompact");
         jQuery("body").addClass("sapUiSizeCozy");
+        jQuery("* #sap-ui-ContentWindowFrame").contents().find("body").addClass("sapUiSizeCozy")
+
       } });
     var oB2 = new sap.m.Button("VSDcompactOff",{text: "Compact", press:function (){
                jQuery("body").removeClass("sapUiSizeCozy");
+        jQuery("* #sap-ui-ContentWindowFrame").contents().find("body").removeClass("sapUiSizeCozy");
                 jQuery("body").addClass("sapUiSizeCompact");
+        jQuery("* #sap-ui-ContentWindowFrame").contents().find("body").addClass("sapUiSizeCompact")
+
               }
             });
     var bContrastMode = false;
@@ -387,7 +406,7 @@
           new sap.m.Label({text: "Compact Content Density", design: "Bold"}),
           new sap.m.SegmentedButton("VSDCompactModeButtons", {
             buttons:[oB, oB2],
-            selectedButton: oB2,
+            selectedButton: oB,
             width: "100%"
           }),
 
@@ -444,7 +463,7 @@
   </script>
 </head>
 
-<body id="body" class="sapUiBody sapUiSizeCompact">
+<body id="body" class="sapUiBody">
 </body>
 
 </html>

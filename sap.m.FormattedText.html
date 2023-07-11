@@ -57,6 +57,16 @@
 
 	var page = new sap.m.Page({
 		title : "sap.m.FormattedText Control",
+		headerContent: [
+			new sap.m.ToggleButton("toggleCompact", {
+				text: "Compact/Cozy",
+				pressed: !sap.ui.Device.system.phone && jQuery("html").hasClass("sapUiSizeCompact"),
+				press: function () {
+					jQuery("body").toggleClass("sapUiSizeCompact", this.getPressed());
+					jQuery("body").toggleClass("sapUiSizeCozy", !this.getPressed());
+				}
+			})
+		],
 		enableScrolling : true,
 		content : new sap.m.VBox({ items: [
 			oTextArea,

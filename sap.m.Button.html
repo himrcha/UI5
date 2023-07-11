@@ -153,12 +153,22 @@
 		oButtonBarButtonReject = null;
 
 	var oPage1 = new sap.m.Page("myPage1", {
+
 		title: "Mobile Button Control",
 		customHeader : new sap.m.Bar({
 			contentLeft: [ oButtonBarButtonSample = new sap.m.Button('myBarButtonSample', {text:"Test Button To Show Changes", tooltip:"Tooltip Test", type:sap.m.ButtonType.Default, press: function() {oHelper.alert("event: 'press' on " + oButtonBarButtonSample)} }) ],
 			contentMiddle: [ new sap.m.Label("myBarLabel", {text: "Button Testpage"}) ],
-			contentRight: [ oButtonBarButtonIcon1 = new sap.m.Button('myBarButtonIcon1', {icon: sStoreIconURI}),
-							oButtonBarButtonIcon2 = new sap.m.Button('myBarButtonIcon2', {icon: sNotesIconURI, enabled: false}) ]
+			contentRight: [
+                new sap.m.ToggleButton("toggleCompact", {
+                    text: "Compact/Cozy",
+                    pressed: !sap.ui.Device.system.phone && jQuery("html").hasClass("sapUiSizeCompact"),
+                    press: function () {
+                        jQuery("body").toggleClass("sapUiSizeCompact", this.getPressed());
+                        jQuery("body").toggleClass("sapUiSizeCozy", !this.getPressed());
+                    }
+                }),
+                oButtonBarButtonIcon1 = new sap.m.Button('myBarButtonIcon1', {icon: sStoreIconURI}),
+                oButtonBarButtonIcon2 = new sap.m.Button('myBarButtonIcon2', {icon: sNotesIconURI, enabled: false}) ]
 		}),
 		subHeader: new sap.m.Bar({
 			contentLeft: [ new sap.m.Button({text:"Default", type:sap.m.ButtonType.Default}) ],
@@ -873,6 +883,6 @@
 </script>
 
 </head>
-<body id="body" class="sapUiBody sapUiSizeCompact">
+<body id="body" class="sapUiBody">
 </body>
 </html>
