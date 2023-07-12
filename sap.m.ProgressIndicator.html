@@ -8,12 +8,13 @@
 		<script src="./js/shared-config.js"></script>
 		<script id="sap-ui-bootstrap"
 				src="https://sdk.openui5.org/resources/sap-ui-core.js"
-				data-sap-ui-async="true"
+				data-sap-ui-async="false"
 				data-sap-ui-compatVersion="edge"
 				data-sap-ui-libs="sap.m"
 				>
 		</script>
         <script>
+           
             sap.ui.require([
                 "sap/ui/core/InvisibleText",
                 "sap/m/App",
@@ -56,7 +57,7 @@
                     text : "Progress Indicator with 75% negative without text (suggested normal size)"
                 });
 
-                // create progressIndicator
+                // // create progressIndicator
                 var oProgInd2 = new ProgressIndicator("pi2", {
                     percentValue:75,
                     displayValue:"75%",
