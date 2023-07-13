@@ -20,7 +20,14 @@
   </script>
 
   <link rel="stylesheet" href="./styles/main.css">
+
   <script>
+    var oContentWindow;
+    window.onload = function(){
+      var oContentIFrame = window.document.getElementById('sap-ui-ContentWindowFrame');
+      oContentWindow = oContentIFrame.contentWindow;
+      this.oContentWindow = oContentWindow;
+    }
 
     jQuery.sap.require("sap.ui.model.json.JSONModel");
 
@@ -32,27 +39,30 @@
           icon: 'sap-icon://dimension',
           expanded: true,
           items: [
+            { title: 'App', key: 'appPage' },
+            { title: 'ActionSelect', key: 'actionSelectPage' },
+            { title: 'ActionSheet', key: 'actionSheetPage' },
+            { title: 'Avatar', key: 'avatarPage' },
+            { title: 'Bar', key: 'barPage' },
+            { title: 'BusyDialog', key: 'busyDialogPage' },
+            { title: 'BusyIndicator', key: 'busyIndicatorPage' },
             { title: 'Button', key: 'buttonPage' },
+
             { title: 'CheckBox', key: 'checkBoxPage', enabled: true },
             { title: 'ComboBox', key: 'comboBoxPage' },
             { title: 'ExpandableText', key: 'expandableTextPage' },
             { title: 'FormattedText', key: 'formattedTextPage' },
             { title: 'Input', key: 'inputPage' },
-
             { title: 'Label', key: 'labelPage' },
             { title: 'MenuButton', key: 'menuButtonPage' },
-
             { title: 'ProgressIndicator', key: 'progressIndicatorPage' },
             { title: 'Switch', key: 'switchPage' },
             { title: 'SegmentedButton', key: 'segmentedButtonPage' },
             { title: 'TextArea', key: 'textAreaPage' },
             { title: 'Text', key: 'textPage' },
             { title: 'ToggleButton', key: 'toggleButtonPage' },
-
             { title: 'UploadSet', key: 'uploadSetPage' },
             { title: 'ViewSettingsDialog', key: 'viewSettingsDialogPage' },
-
-
           ]
         },
         {
@@ -195,7 +205,7 @@
           height: "100%",
           horizontal: false,
           content: [
-            new sap.ui.core.HTML({content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Button.html"></iframe></div>'})
+            new sap.ui.core.HTML("buttonIframe", {content:'<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Button.html"></iframe></div>'})
           ]
         }),
         new sap.m.ScrollContainer('tablePage', {
@@ -309,7 +319,63 @@
           content: [
             new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ToggleButton.html"></iframe></div>'})
           ]
-        })
+        }),
+        new sap.m.ScrollContainer('appPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.App.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('actionSelectPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ActionSelect.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('actionSheetPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.ActionSheet.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('avatarPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Avatar.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('barPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.Bar.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('busyDialogPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.BusyDialog.html"></iframe></div>'})
+          ]
+        }),
+        new sap.m.ScrollContainer('busyIndicatorPage', {
+          vertical: true,
+          height: "100%",
+          horizontal: false,
+          content: [
+            new sap.ui.core.HTML({content: '<div id="sap-ui-ContentWindow"><iframe id="sap-ui-ContentWindowFrame" src="sap.m.BusyIndicator.html"></iframe></div>'})
+          ]
+        }),
       ]
     });
 
@@ -442,7 +508,7 @@
                 oContrastModeCB.setEnabled(false);
                 oContrastModeCB.setSelected(false);
               }
-              sap.ui.getCore().applyTheme(sTheme);
+              oContentWindow.sap.ui.getCore().applyTheme(sTheme);
             }
           }).setModel(model),
           // new sap.m.Label({text: "Contrast Mode", design: "Bold"}).addStyleClass("sapUiSmallMarginTop"),
@@ -467,6 +533,9 @@
       sideContent: oSideNavigation,
       mainContents: oNavContainer
     }).placeAt('body');
+
+
+
 
   </script>
 </head>

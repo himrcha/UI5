@@ -14,6 +14,8 @@
 	display: inline;
 	position: relative;
 }
+
+
 </style>
 
 <script>
@@ -43,11 +45,11 @@
 		},
 		typeAccept : function(oButton) {
 			oButton.setText("Accept Button");
-			oButton.setType(sap.m.ButtonType.Accept);
+			oButton.setType(sap.m.Accept);
 		},
 		typeReject : function(oButton) {
 			oButton.setText("Reject Button");
-			oButton.setType(sap.m.ButtonType.Reject);
+			oButton.setType(sap.m.Reject);
 		},
 		typeTransparent : function(oButton) {
 			oButton.setText("Transparent Button");
@@ -59,15 +61,15 @@
 		},
 		typeBack : function(oButton) {
 			oButton.setText("Back Button");
-			oButton.setType(sap.m.ButtonType.Back);
+			oButton.setType(sap.m.Back);
 		},
 		typeUp : function(oButton) {
 			oButton.setText("Up Button");
-			oButton.setType(sap.m.ButtonType.Up);
+			oButton.setType(sap.m.Up);
 		},
 		typeEmphasized : function(oButton) {
 			oButton.setText("Emphasized Button");
-			oButton.setType(sap.m.ButtonType.Emphasized);
+			oButton.setType(sap.m.Emphasized);
 		},
         typeCritical : function(oButton) {
             oButton.setText("Critical Button");
@@ -172,21 +174,21 @@
 		}),
 		subHeader: new sap.m.Bar({
 			contentLeft: [ new sap.m.Button({text:"Default", type:sap.m.ButtonType.Default}) ],
-			contentMiddle:[ new sap.m.Button({text:"Back", type:sap.m.ButtonType.Back}),
-							new sap.m.Button({text:"Up", type:sap.m.ButtonType.Up}),
-							new sap.m.Button({text:"Yes", type:sap.m.ButtonType.Accept}),
-							new sap.m.Button({text:"No", type:sap.m.ButtonType.Reject}),
+			contentMiddle:[ new sap.m.Button({text:"Back", type:sap.m.Back}),
+							new sap.m.Button({text:"Up", type:sap.m.Up}),
+							new sap.m.Button({text:"Yes", type:sap.m.Accept}),
+							new sap.m.Button({text:"No", type:sap.m.Reject}),
 							new sap.m.Button({text:"Trans", type:sap.m.ButtonType.Transparent}) ],
 			contentRight: [ new sap.m.Button({icon: sStoreIconURI}),
 							new sap.m.Button({text:"", type:sap.m.ButtonType.Default, icon: sNotesIconURI, enabled: false}) ]
 		}),
 		footer : new sap.m.Bar({
 			contentLeft: [ new sap.m.Button({text:"Default", type:sap.m.ButtonType.Default, icon: sStoreIconURI}),
-							new sap.m.Button({text:"Emphasized", type:sap.m.ButtonType.Emphasized}) ],
-			contentMiddle:[ new sap.m.Button({text:"Back", type:sap.m.ButtonType.Back}),
-							new sap.m.Button({text:"Up", type:sap.m.ButtonType.Up}),
-							new sap.m.Button({text:"Yes", type:sap.m.ButtonType.Accept}),
-							new sap.m.Button({text:"No", type:sap.m.ButtonType.Reject, icon: "./images/action.png", enabled:false}),
+							new sap.m.Button({text:"Emphasized", type:sap.m.Emphasized}) ],
+			contentMiddle:[ new sap.m.Button({text:"Back", type:sap.m.Back}),
+							new sap.m.Button({text:"Up", type:sap.m.Up}),
+							new sap.m.Button({text:"Yes", type:sap.m.Accept}),
+							new sap.m.Button({text:"No", type:sap.m.Reject, icon: "./images/action.png", enabled:false}),
 							new sap.m.Button({text:"Trans", type:sap.m.ButtonType.Transparent}),
 							new sap.m.Button({text:"Off", type:sap.m.ButtonType.Default,  icon: "sap-icon://favorite", enabled:false}) ],
 			contentRight: [	new sap.m.Button({icon: sStoreIconURI}),
@@ -196,10 +198,10 @@
 
 	var oBar2 = new sap.m.Bar({
 		contentLeft: [ new sap.m.Button({text:"Default", type:sap.m.ButtonType.Default, enabled:false}) ],
-		contentMiddle:[ new sap.m.Button({text:"Back", type:sap.m.ButtonType.Back, enabled:false}),
-						new sap.m.Button({text:"Up", type:sap.m.ButtonType.Up, enabled:false}),
-						new sap.m.Button({text:"Yes", type:sap.m.ButtonType.Accept, enabled:false}),
-						new sap.m.Button({text:"No", type:sap.m.ButtonType.Reject, enabled:false}),
+		contentMiddle:[ new sap.m.Button({text:"Back", type:sap.m.Back, enabled:false}),
+						new sap.m.Button({text:"Up", type:sap.m.Up, enabled:false}),
+						new sap.m.Button({text:"Yes", type:sap.m.Accept, enabled:false}),
+						new sap.m.Button({text:"No", type:sap.m.Reject, enabled:false}),
 						new sap.m.Button({text:"Trans", type:sap.m.ButtonType.Transparent, enabled:false}) ],
 		contentRight: [ new sap.m.Button({icon: sStoreIconURI}),
 						new sap.m.Button({text:"", type:sap.m.ButtonType.Default, icon: sNotesIconURI, enabled: false}) ]
@@ -749,6 +751,7 @@
 		additionalText: "Dec – Jan"
 	});
 
+
 	oPage1.addContent(oBar2)
 	      .addContent(new sap.ui.core.HTML("myEmptyLine1", {content: "<br><div>1. 버튼타입(ButtonType)</div>"}))
 				.addContent(new sap.ui.core.HTML("myHtmlBarDefault", {content: ""}))
@@ -875,8 +878,146 @@
 				.addContent(new sap.ui.core.HTML("myHtmloButtonWithSecondTextYears", {content: "<div class='ButtonSpace'>&nbsp;</div>"}))
 				.addContent(oButtonWithTwoYearsText)
 				.addContent(new sap.ui.core.HTML("myHtmloButtonWithSecondTextMonths", {content: "<div class='ButtonSpace'>&nbsp;</div>"}))
-				.addContent(oButtonWithTwoMonthsText);
+				.addContent(oButtonWithTwoMonthsText)
+                .addContent(new sap.ui.core.HTML("myDividerLine5", {content: "<br><hr style='border:solid #000000; border-width: 5px 0 0;'>"}))
+                .addContent(new sap.m.Label("L1", { text: "go to homepage", width: "100%" }))
+                    .addContent(new sap.m.Title({ text: "Default Buttons", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home" }))
 
+                    .addContent(new sap.m.Title({ text: "Default Buttons with label", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaLabelledBy: ["L1"] }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaLabelledBy: ["L1"] }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaLabelledBy: ["L1"] }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaLabelledBy: ["L1"] }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaLabelledBy: ["L1"] }))
+
+                    .addContent(new sap.m.Title({ text: "Default Buttons with Description", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaDescribedBy: ["L1"] }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaDescribedBy: ["L1"] }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaDescribedBy: ["L1"] }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaDescribedBy: ["L1"] }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaDescribedBy: ["L1"] }))
+
+                    .addContent(new sap.m.Title({ text: "Buttons with special types", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Title({ text: "Type: Back", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, type: "Back" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", type: "Back" }))
+                    .addContent(new sap.m.Title({ text: "Type: Back with label", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaLabelledBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaLabelledBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaLabelledBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaLabelledBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaLabelledBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Title({ text: "Type: Back with Description", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaDescribedBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaDescribedBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaDescribedBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaDescribedBy: ["L1"], type: "Back" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaDescribedBy: ["L1"], type: "Back" }))
+
+                    .addContent(new sap.m.Title({ text: "Type: Up", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, type: "Up" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", type: "Up" }))
+                    .addContent(new sap.m.Title({ text: "Type: Up with label", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaLabelledBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaLabelledBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaLabelledBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaLabelledBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaLabelledBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Title({ text: "Type: Up with Description", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaDescribedBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaDescribedBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaDescribedBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaDescribedBy: ["L1"], type: "Up" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaDescribedBy: ["L1"], type: "Up" }))
+
+                    .addContent(new sap.m.Title({ text: "Type: Accept", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, type: "Accept" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", type: "Accept" }))
+                    .addContent(new sap.m.Title({ text: "Type: Accept with label", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaLabelledBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaLabelledBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaLabelledBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaLabelledBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaLabelledBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Title({ text: "Type: Accept with Description", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaDescribedBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaDescribedBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaDescribedBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaDescribedBy: ["L1"], type: "Accept" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaDescribedBy: ["L1"], type: "Accept" }))
+
+                    .addContent(new sap.m.Title({ text: "Type: Reject", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, type: "Reject" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", type: "Reject" }))
+                    .addContent(new sap.m.Title({ text: "Type: Reject with label", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaLabelledBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaLabelledBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaLabelledBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaLabelledBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaLabelledBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Title({ text: "Type: Reject with Description", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaDescribedBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaDescribedBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaDescribedBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaDescribedBy: ["L1"], type: "Reject" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaDescribedBy: ["L1"], type: "Reject" }))
+
+                    .addContent(new sap.m.Title({ text: "Type: Attention", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, type: "Attention" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", type: "Attention" }))
+                    .addContent(new sap.m.Title({ text: "Type: Attention with label", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaLabelledBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaLabelledBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaLabelledBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaLabelledBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaLabelledBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Title({ text: "Type: Attention with Description", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaDescribedBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaDescribedBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaDescribedBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaDescribedBy: ["L1"], type: "Attention" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaDescribedBy: ["L1"], type: "Attention" }))
+
+                    .addContent(new sap.m.Title({ text: "Type: Emphasized", level: "H3", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", type: "Emphasized" }))
+                    .addContent(new sap.m.Title({ text: "Type: Emphasized with label", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaLabelledBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaLabelledBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaLabelledBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaLabelledBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaLabelledBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Title({ text: "Type: Emphasized with Description", level: "H2", width: "100%" }))
+                    .addContent(new sap.m.Button({ text: "Home", ariaDescribedBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", enabled: false, ariaDescribedBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", ariaDescribedBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ text: "Home", icon: "sap-icon://home", iconFirst: false, ariaDescribedBy: ["L1"], type: "Emphasized" }))
+                    .addContent(new sap.m.Button({ icon: "sap-icon://home", tooltip: "Home", ariaDescribedBy: ["L1"], type: "Emphasized" })
+
+                )
 	oApp.addPage(oPage1);
 	oApp.placeAt("body");
 
